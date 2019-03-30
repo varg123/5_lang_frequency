@@ -31,14 +31,17 @@ def parse_filepath():
 
 def print_statistic(statistic_words):
     print("10 самых употребимых слов:")
-    templ = '{1} - встречается {0} раз'
+    templ_unit_stat = '{1} - встречается {0} раз'
     for stat_unit in statistic_words:
-        print(templ.format(*stat_unit))
+        print(templ_unit_stat.format(*stat_unit))
 
 
 def main():
     filepath = parse_filepath()
-    text_study = load_data(filepath)
+    try:
+        text_study = load_data(filepath)
+    except FileNotFoundError:
+        exit("Файл с текстом не найден")
     statistic_words = get_most_frequent_words(text_study)
     print_statistic(statistic_words)
 
