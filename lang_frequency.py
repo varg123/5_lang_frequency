@@ -2,6 +2,9 @@ import argparse
 import re
 import collections
 
+COUNT_UNIT_STATISTIC = 10
+
+
 def load_data(filepath):
     with open(filepath, "rt", encoding='utf8') as file_with_text:
         return file_with_text.read()
@@ -12,8 +15,8 @@ def get_most_frequent_words(text_study):
     words_all = re.findall(tmpl, text_study)
     statistic_frequent_words = collections.Counter()
     for word in words_all:
-        statistic_frequent_words[word]+=1
-    return statistic_frequent_words.most_common(10)
+        statistic_frequent_words[word] += 1
+    return statistic_frequent_words.most_common(COUNT_UNIT_STATISTIC)
 
 
 def parse_filepath():
@@ -29,8 +32,9 @@ def parse_filepath():
 
 
 def print_statistic(statistic_words):
-    print("10 самых употребимых слов:")
+    templ_header = "{} самых употребимых слов:"
     templ_unit_stat = '{0} - встречается {1} раз'
+    print(templ_header.format(COUNT_UNIT_STATISTIC))
     for stat_unit in statistic_words:
         print(templ_unit_stat.format(*stat_unit))
 
