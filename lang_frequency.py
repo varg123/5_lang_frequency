@@ -6,7 +6,7 @@ COUNT_UNIT_STATISTIC = 10
 
 
 def load_data(filepath):
-    with open(filepath, "rt", encoding='utf8') as file_with_text:
+    with open(filepath, 'rt', encoding='utf8') as file_with_text:
         return file_with_text.read()
 
 
@@ -32,7 +32,7 @@ def parse_filepath():
 
 
 def print_statistic(statistic_words):
-    templ_header = "{} самых употребимых слов:"
+    templ_header = '{} самых употребимых слов:'
     templ_unit_stat = '{0} - встречается {1} раз'
     print(templ_header.format(COUNT_UNIT_STATISTIC))
     for stat_unit in statistic_words:
@@ -44,7 +44,7 @@ def main():
     try:
         text_study = load_data(filepath)
     except FileNotFoundError:
-        exit("Файл с текстом не найден")
+        exit('Файл с текстом не найден')
     statistic_words = get_most_frequent_words(text_study)
     print_statistic(statistic_words)
 
