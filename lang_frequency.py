@@ -12,7 +12,7 @@ def load_data(filepath):
 
 def get_most_frequent_words(text_study):
     word_pattern = r'[\w\-]+'
-    words_all = re.findall(word_pattern, text_study)
+    words_all = re.findall(word_pattern, text_study.lower())
     statistic_frequent_words = collections.Counter()
     for word in words_all:
         statistic_frequent_words[word] += 1
