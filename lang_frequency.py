@@ -14,8 +14,6 @@ def get_most_frequent_words(text_study):
     word_pattern = r'[\w\-]+'
     words_all = re.findall(word_pattern, text_study.lower())
     statistic_frequent_words = collections.Counter(words_all)
-    #for word in words_all:
-    #    statistic_frequent_words[word] += 1
     return statistic_frequent_words.most_common(COUNT_UNIT_STATISTIC)
 
 
